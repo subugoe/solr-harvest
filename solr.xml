@@ -34,5 +34,7 @@
     <core name="math-arxiv" instanceDir="math-arxiv"/>
     <core name="digizeitschriften" instanceDir="digizeitschriften"/>
     <core name="test" instanceDir="test"/>
+    <core name="gdz" instanceDir="gdz"/>
+    <core name="adw" instanceDir="adw"/>
   </cores>
 </solr>
