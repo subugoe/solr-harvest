@@ -173,15 +173,6 @@
     </fieldType>
     -->
 
-	<fieldType name="text_namereverse" class="solr.TextField">
-		<analyzer>
-			<tokenizer class="solr.StandardTokenizerFactory"/>
-<!--			<filter class="solr.ICUNormalizer2FilterFactory" name="nfkc_cf" mode="compose"/> -->
-<!--			<filter class="solr.PatternReplaceFilter" pattern="([^,]*),\s*(.*)" replacement="$2 $1"/> -->
-			<filter class="solr.LowerCaseFilterFactory"/>
-    	</analyzer>
-	</fieldType>
-
 
     <!-- A text field that only splits on whitespace for exact matching of words -->
     <fieldType name="text_ws" class="solr.TextField" positionIncrementGap="100">
@@ -192,20 +183,22 @@
 
     <!-- A general text field that has reasonable, generic
          cross-language defaults: it tokenizes with StandardTokenizer,
-	 removes stop words from case-insensitive "stopwords.txt"
-	 (empty by default), and down cases.  At query time only, it
-	 also applies synonyms. -->
+         removes stop words from case-insensitive "stopwords.txt"
+         (empty by default), and down cases.  At query time only, it
+         also applies synonyms. -->
     <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
         <tokenizer class="solr.StandardTokenizerFactory"/>
-        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" enablePositionIncrements="true" />
+        <charFilter class="solr.MappingCharFilterFactory" mapping="mapping-ISOLatin1Accent.txt"/>
+       <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" enablePositionIncrements="true" />
         <!-- in this example, we will only use synonyms at query time
         <filter class="solr.SynonymFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
         -->
-        <filter class="solr.LowerCaseFilterFactory"/>
+       <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
       <analyzer type="query">
         <tokenizer class="solr.StandardTokenizerFactory"/>
+        <charFilter class="solr.MappingCharFilterFactory" mapping="mapping-ISOLatin1Accent.txt"/>
         <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" enablePositionIncrements="true" />
         <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
         <filter class="solr.LowerCaseFilterFactory"/>
@@ -233,7 +226,7 @@
                 enablePositionIncrements="true"
                 />
         <filter class="solr.LowerCaseFilterFactory"/>
-	<filter class="solr.EnglishPossessiveFilterFactory"/>
+        <filter class="solr.EnglishPossessiveFilterFactory"/>
         <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
 	<!-- Optionally you may want to use this less aggressive stemmer instead of PorterStemFilterFactory:
         <filter class="solr.EnglishMinimalStemFilterFactory"/>
@@ -553,7 +546,6 @@
    <field name="last_modified" type="date" indexed="true" stored="true"/>
 
    <field name="author" type="text_general" indexed="true" stored="true" multiValued="true"/>
-   <field name="author_reverse" type="text_namereverse" indexed="true" stored="true" multiValued="true"/>
    <field name="contributor" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="publisher" type="text_general" indexed="true" stored="true" multiValued="true"/>
 
@@ -599,6 +591,8 @@
    <field name="oai_format" type="string" indexed="false" stored="true" multiValued="true"/>
 
 
+   <!-- Dynamic fields for arbitrary MARC/Pica fields, e.g. »d028Asa« -->
+   <dynamicField name="d*" type="string" indexed="true" stored="true" multiValued="true"/>
 
 
    <!-- catchall field, containing all other searchable text fields (implemented
@@ -681,7 +675,6 @@
       is added to the index.  It's used either to index the same field differently,
       or to add multiple fields to the same field for easier/faster searching.  -->
  <copyField source="*" dest="text"/>
- <copyField source="author" dest="author_reverse"/>
 
    <!-- Above, multiple source fields are copied to the [text] field.
 	  Another way to map multiple source fields to the same
