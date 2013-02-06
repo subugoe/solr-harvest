@@ -36,5 +36,6 @@
     <core name="test" instanceDir="test"/>
     <core name="gdz" instanceDir="gdz"/>
     <core name="adw" instanceDir="adw"/>
+    <core name="goescholar" instanceDir="goescholar"/>
   </cores>
 </solr>
