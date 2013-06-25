@@ -574,6 +574,7 @@
 	
 		<field name="title" type="text_general" indexed="true" stored="true" multiValued="true"/>
 		<field name="description" type="text_general" indexed="true" stored="true" multiValued="true"/>
+		<field name="abstract" type="text_general" indexed="true" stored="true" multiValued="true"/>
 		<field name="date" type="string" indexed="true" stored="true" multiValued="true"/>
 	
 		<field name="type" type="text_general" indexed="true" stored="true" multiValued="true"/>
