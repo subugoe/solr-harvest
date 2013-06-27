@@ -38,5 +38,6 @@
     <core name="adw" instanceDir="adw"/>
     <core name="goescholar" instanceDir="goescholar"/>
     <core name="pangaea" instanceDir="pangaea"/>
+    <core name="jfk-institut-zeitungen" instanceDir="jfk-institut-zeitungen"/>
   </cores>
 </solr>
