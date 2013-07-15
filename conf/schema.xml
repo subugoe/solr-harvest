@@ -576,6 +576,7 @@
 		<field name="description" type="text_general" indexed="true" stored="true" multiValued="true"/>
 		<field name="abstract" type="text_general" indexed="true" stored="true" multiValued="true"/>
 		<field name="date" type="string" indexed="true" stored="true" multiValued="true"/>
+		<field name="coverage" type="string" indexed="true" stored="true" multiValued="true"/>
 	
 		<field name="type" type="text_general" indexed="true" stored="true" multiValued="true"/>
 		<field name="content_type" type="string" indexed="true" stored="true" multiValued="true"/>
@@ -583,6 +584,7 @@
 		<field name="identifier" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="url" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="doi" type="string" indexed="true" stored="true" multiValued="true"/>
+		<field name="issn" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="language" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="relation" type="text_general" indexed="true" stored="true" multiValued="true"/>
 		<field name="collection" type="string" indexed="true" stored="true" multiValued="true"/>
@@ -619,6 +621,9 @@
 	
 		<!-- Dynamic fields for arbitrary MARC/Pica fields, e.g. »d028Asa« -->
 		<dynamicField name="d*" type="string" indexed="true" stored="true" multiValued="true"/>
+	
+		<dynamicField name="*_sort" type="string" indexed="true" stored="true" multiValued="false"/>
+
 	
 	
 		<!--
