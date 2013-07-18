@@ -585,6 +585,7 @@
 		<field name="url" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="doi" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="issn" type="string" indexed="true" stored="true" multiValued="true"/>
+		<field name="zdb" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="language" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="relation" type="text_general" indexed="true" stored="true" multiValued="true"/>
 		<field name="collection" type="string" indexed="true" stored="true" multiValued="true"/>
@@ -623,6 +624,7 @@
 		<dynamicField name="d*" type="string" indexed="true" stored="true" multiValued="true"/>
 	
 		<dynamicField name="*_sort" type="string" indexed="true" stored="true" multiValued="false"/>
+		<dynamicField name="*_facet" type="string" indexed="true" stored="true" multiValued="true"/>
 
 	
 	
