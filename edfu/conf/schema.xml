@@ -55,13 +55,11 @@
 		<field name="formular_id" type="int" indexed="true" stored="true"/>
 		<field name="texttyp" type="text_de" indexed="true" stored="true"/>
 		<field name="photo" type="text_ws" indexed="true" stored="true" multiValued="true"/>
-		<field name="photo_collection_string" type="text_ws" indexed="true" stored="true" multiValued="true"/>
-		<field name="photo_collection_photos" type="text_ws" indexed="true" stored="true" multiValued="true"/>
-		<field name="photo_collection_id" type="string" indexed="true" stored="true" multiValued="true"/>
-		<field name="photo_collection_kommentar" type="text_de" indexed="true" stored="true" multiValued="true"/>
+		<field name="photo_pfad" type="string" indexed="true" stored="true" multiValued="true"/>
+		<field name="photo_kommentar" type="text_ws" indexed="true" stored="true" multiValued="true"/>
 		<field name="literatur" type="text_de" indexed="true" stored="true" multiValued="true"/>
 		<field name="ort_id" type="int" indexed="true" stored="true"/>
-		<field name="ortsbeschreibung" type="text_de" indexed="true" stored="true"/>
+		<field name="lokalisation" type="text_de" indexed="true" stored="true"/>
 		<field name="gott_id" type="int" indexed="true" stored="true"/>
 		<field name="funktion" type="text_de" indexed="true" stored="true"/>
 		<field name="eponym" type="text_de" indexed="true" stored ="true"/>
@@ -80,6 +78,9 @@
 		<field name="berlin_notiz" type="string" indexed="true" stored="true" multiValued="false"/>
 		<field name="berlin_display" type="string" indexed="true" stored="true" multiValued="false"/>
 
+		<field name="stelle_uid" type="int" indexed="true" stored="true" multiValued="true"/>
+		<field name="stelle_count" type="int" indexed="true" stored="true" multiValued="false"/>
+		<field name="tempel" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="band" type="int" indexed="true" stored="true" multiValued="true"/>
 		<field name="freigegeben" type="boolean" indexed="true" stored="true" multiValued="true"/>
 		<field name="seite_start" type="int" indexed="true" stored="true" multiValued="true"/>
@@ -151,7 +152,7 @@
 	<copyField source="uebersetzung" dest="text"/>
 	<copyField source="texttyp" dest="text"/>
 	<copyField source="literatur" dest="text"/>
-	<copyField source="ortsbeschreibung" dest="text"/>
+	<copyField source="lokalisation" dest="text"/>
 	<copyField source="eponym" dest="text"/>
 	<copyField source="beziehung" dest="text"/>
 	<copyField source="funktion" dest="text"/>
@@ -164,6 +165,7 @@
 
 	<copyField source="photo" dest="text"/>
 	<copyField source="bandseitezeile" dest="text"/>
+	<copyField source="berlin_display" dest="text"/>
 	
 	<copyField source="photo" dest="photo_highlight"/>
 	<copyField source="bandseitezeile" dest="bandseitezeile_highlight"/>
