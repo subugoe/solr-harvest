@@ -50,28 +50,34 @@
 		<field name="kloster" type="text_de" indexed="true" stored="true"/>
 		<field name="kloster_id" type="string" indexed="true" stored="true"/>
 		<field name="bearbeitungsstatus" type="string" indexed="true" stored="true" multiValued="false"/>
+		<field name="personallistenstatus" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="bemerkung_kloster" type="text_de" indexed="true" stored="true" multiValued="true"/>
 		<field name="von" type="int" indexed="true" stored="true" multiValued="false"/>
 		<field name="bis" type="int" indexed="true" stored="true" multiValued="false"/>
 
 		<field name="text_gs_band" type="text_de" indexed="true" stored="true" multiValued="true"/>
 		<field name="band_nummer" type="string" indexed="true" stored="true" multiValued="true"/>
+		<field name="band_sortierung" type="int" indexed="true" stored="true" multiValued="true"/>
+		<field name="band_facet" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="band_seite" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="band_titel" type="text_de" indexed="true" stored="true" multiValued="true"/>
+		<field name="band_kurztitel" type="text_de" indexed="true" stored="true" multiValued="true"/>
 		<field name="band_id" type="int" indexed="true" stored="true" multiValued="true"/>
 		<field name="band_url" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="band_url_seitengenau" type="string" indexed="true" stored="true" multiValued="true"/>
-		<field name="status" type="text_de" indexed="true" stored="true" multiValued="true"/>
+		<field name="kloster_status" type="text_de" indexed="true" stored="true" multiValued="true"/>
 		<field name="gruender" type="text_de" indexed="true" stored="true" multiValued="true"/>
 
-		<field name="literatur" type="text_de" indexed="true" stored="true" multiValued="true"/>
-		<field name="literatur_id" type="string" indexed="true" stored="true" multiValued="true"/>
+		<field name="literatur_citekey" type="string" indexed="true" stored="true" multiValued="true"/>
+		<field name="literatur_beschreibung" type="string" indexed="true" stored="true" multiValued="true"/>
 
 		<field name="url" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="url_bemerkung" type="text_de" indexed="true" stored="true" multiValued="true"/>
 		<field name="url_detail" type="text_de" indexed="true" stored="true" multiValued="true"/>
-		<field name="url_art" type="string" indexed="true" stored="true" multiValued="true"/>
+		<field name="url_typ" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="url_relation" type="string" indexed="true" stored="true" multiValued="true"/>
+		<field name="url_quelle" type="string" indexed="true" stored="true" multiValued="true"/>
+		<field name="url_quelle_titel" type="text_de" indexed="true" stored="true" multiValued="true"/>
 		<field name="gnd" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="url_wikipedia" type="string" indexed="true" stored="true" multiValued="true"/>
 
@@ -93,10 +99,14 @@
 
 		<field name="bistum" type="text_de" indexed="true" stored="true" multiValued="true"/>
 		<field name="bistum_uid" type="int" indexed="true" stored="true" multiValued="true"/>
+		<field name="bistum_gnd" type="string" indexed="true" stored="true" multiValued="true"/>
+		<field name="bistum_wikipedia" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="kirchenprovinz" type="text_de" indexed="true" stored="true" multiValued="true"/>
 		<field name="ist_erzbistum" type="boolean" indexed="true" stored="true" multiValued="true"/>
 
 		<field name="orden" type="text_de" indexed="true" stored="true" multiValued="true"/>
+		<field name="orden_gnd" type="string" indexed="true" stored="true" multiValued="true"/>
+		<field name="orden_wikipedia" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="orden_graphik" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="orden_ordo" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="orden_symbol" type="string" indexed="true" stored="true" multiValued="true"/>
@@ -106,7 +116,7 @@
 
 		<field name="orden_standort_von" type="int" indexed="true" stored="true" multiValued="true"/>
 		<field name="orden_standort_bis" type="int" indexed="true" stored="true" multiValued="true"/>
-		<field name="orden_standort_jahr50" type="int" indexed="true" stored="true" multiValued="true"/>
+		<field name="orden_standort_jahr50" type="int" indexed="true" stored="false" multiValued="true"/>
 
 		<field name="orden_von_von" type="int" indexed="true" stored="true" multiValued="true"/>
 		<field name="orden_von_bis" type="int" indexed="true" stored="true" multiValued="true"/>
@@ -114,7 +124,7 @@
 		<field name="orden_bis_von" type="int" indexed="true" stored="true" multiValued="true"/>
 		<field name="orden_bis_bis" type="int" indexed="true" stored="true" multiValued="true"/>
 		<field name="orden_bis_verbal" type="string" indexed="true" stored="true" multiValued="true"/>
-		<field name="orden_jahr50" type="int" indexed="true" stored="true" multiValued="true"/>
+		<field name="orden_jahr50" type="int" indexed="true" stored="false" multiValued="true"/>
 		<field name="standort_von_von" type="int" indexed="true" stored="true" multiValued="true"/>
 		<field name="standort_von_bis" type="int" indexed="true" stored="true" multiValued="true"/>
 		<field name="standort_von_verbal" type="string" indexed="true" stored="true" multiValued="true"/>
@@ -123,30 +133,31 @@
 		<field name="standort_bis_verbal" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="standort_jahr50" type="int" indexed="true" stored="false" multiValued="true"/>
 
-		<field name="jahr50" type="int" indexed="true" stored="true" multiValued="true"/>
+		<field name="jahr50" type="int" indexed="true" stored="false" multiValued="true"/>
 
-		<field name="zeitraum_von_von" type="int" indexed="true" stored="true" multiValued="true"/>
-		<field name="zeitraum_von_bis" type="int" indexed="true" stored="true" multiValued="true"/>
-		<field name="zeitraum_von_verbal" type="string" indexed="true" stored="true" multiValued="true"/>
-		<field name="zeitraum_bis_von" type="int" indexed="true" stored="true" multiValued="true"/>
-		<field name="zeitraum_bis_bis" type="int" indexed="true" stored="true" multiValued="true"/>
-		<field name="zeitraum_bis_verbal" type="string" indexed="true" stored="true" multiValued="true"/>
+		<field name="zeitraum_von_von" type="int" indexed="true" stored="false" multiValued="true"/>
+		<field name="zeitraum_von_bis" type="int" indexed="true" stored="false" multiValued="true"/>
+		<field name="zeitraum_von_verbal" type="string" indexed="true" stored="false" multiValued="true"/>
+		<field name="zeitraum_bis_von" type="int" indexed="true" stored="false" multiValued="true"/>
+		<field name="zeitraum_bis_bis" type="int" indexed="true" stored="false" multiValued="true"/>
+		<field name="zeitraum_bis_verbal" type="string" indexed="true" stored="false" multiValued="true"/>
 		<field name="zeitraum_jahr50" type="int" indexed="true" stored="false" multiValued="true"/>
 		<field name="zeitraum_uid" type="int" indexed="true" stored="true" multiValued="true"/>
 
-		<field name="person_name_xml" type="text_de" indexed="true" stored="true" multiValued="true"/>
-		<field name="person_vorname" type="text_de" indexed="true" stored="false" multiValued="true"/>
-		<field name="person_namensalternativen_xml" type="text_de" indexed="true" stored="true" multiValued="true"/>
-		<field name="person_anmerkung_xml" type="text_de" indexed="true" stored="true" multiValued="true"/>
+		<field name="person_name" type="text_de" indexed="true" stored="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
+		<field name="person_vorname" type="text_de" indexed="true" stored="false" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
+		<field name="person_namensalternativen" type="text_de" indexed="true" stored="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
+		<field name="person_anmerkung" type="text_de" indexed="true" stored="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
 		<field name="person_bezeichnung" type="text_de" indexed="true" stored="true" multiValued="true"/>
 		<field name="person_bezeichnung_plural" type="text_de" indexed="true" stored="true" multiValued="true"/>
 		<field name="person_von_verbal" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="person_bis_verbal" type="string" indexed="true" stored="true" multiValued="true"/>
-		<field name="person_von" type="int" indexed="true" stored="false" multiValued="true"/>
-		<field name="person_bis" type="int" indexed="true" stored="false" multiValued="true"/>
+		<field name="person_von" type="int" indexed="true" stored="true" multiValued="true"/>
+		<field name="person_bis" type="int" indexed="true" stored="true" multiValued="true"/>
 		<field name="person_verbal" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="person_gnd" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="person_gso" type="string" indexed="true" stored="true" multiValued="true"/>
+		<field name="person_office_id" type="string" indexed="true" stored="true" multiValued="true"/>
 
 		<field name="bemerkung" type="text_de" indexed="true" stored="true" multiValued="true"/>
 
@@ -187,7 +198,6 @@
 	<copyField source="band_nummer" dest="text"/>
 	<copyField source="band_titel" dest="text"/>
 	<copyField source="gruender" dest="text"/>
-	<copyField source="literatur" dest="text"/>
 	<copyField source="gnd" dest="text"/>
 <!--	<copyField source="geonames" dest="text"/> -->
 	<copyField source="koordinaten" dest="text"/>
@@ -200,8 +210,8 @@
 	<copyField source="orden" dest="text"/>
 <!--	<copyField source="orden_ordo" dest="text"/> -->
 	<copyField source="orden_typ" dest="text"/>
-	<copyField source="person_name_xml" dest="text"/>
-	<copyField source="person_namensalternativen_xml" dest="text"/>
+	<copyField source="person_name" dest="text"/>
+	<copyField source="person_namensalternativen" dest="text"/>
 	<copyField source="person_bezeichnung" dest="text"/>
 	<copyField source="person_gso" dest="text"/>
 
@@ -234,6 +244,7 @@
 	<!-- <copyField source="orden" dest="orden_facet"/> Ordensfacette wird (leicht anders) im Indexierungsskript gefüllt -->
 	<copyField source="bistum" dest="bistum_facet"/>
 	<copyField source="land" dest="land_facet"/>
+	<copyField source="kloster_status" dest="status_facet"/>
 	
 	<copyField source="kloster" dest="all_suggest"/>
 	<copyField source="ort" dest="all_suggest"/>
@@ -241,8 +252,11 @@
 	<copyField source="kreis" dest="all_suggest"/>
 	<copyField source="bistum" dest="all_suggest"/>
 	<copyField source="orden" dest="all_suggest"/>
+
+	<copyField source="kloster" dest="klostername_suggest"/>
 	<copyField source="bistum" dest="bistum_suggest"/>
 	<copyField source="orden" dest="orden_suggest"/>
+	<copyField source="ort" dest="ort_suggest"/>
 	
 	
 
